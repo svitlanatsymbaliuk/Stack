@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LinkedListCollectionStack<Item> implements StackInterface<Item> {
 
-	private List<Item> items = new LinkedList<Item>();
+	protected List<Item> items = new LinkedList<Item>();
 	private int size;
 
 	public LinkedListCollectionStack() {
