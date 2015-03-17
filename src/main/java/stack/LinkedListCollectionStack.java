@@ -1,19 +1,15 @@
 package stack;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-public class Stack<Item> implements StackInterface<Item> {
+public class LinkedListCollectionStack<Item> implements StackInterface<Item> {
 
 	private List<Item> items = new LinkedList<Item>();
-	private Set<Item> itemsWithoutDuplicates = new HashSet<Item>();
 	private int size;
 
-	public Stack() {
+	public LinkedListCollectionStack() {
 		items.clear();
-		itemsWithoutDuplicates.clear();
 		size = 0;
 	}
 
@@ -40,11 +36,6 @@ public class Stack<Item> implements StackInterface<Item> {
 
 	public boolean isEmpty() {
 		return (size == 0);
-	}
-
-	public int getUniqueElementsCount() {
-		itemsWithoutDuplicates.addAll(items);
-		return itemsWithoutDuplicates.size();
 	}
 
 }

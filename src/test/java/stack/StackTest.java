@@ -7,9 +7,47 @@ import org.junit.Test;
 public class StackTest {
 
 	@Test
+	public void uniqueStringElementsCountTest() {
+		String obj1 = "String Object 1";
+		String obj2 = "String Object";
+		String obj3 = "String Object 3";
+		String obj4 = "String Object";
+		String obj5 = "String Object 5";
+		String obj6 = "String Object";
+
+		Stack<String> stack = new Stack<String>();
+
+		stack.push(obj1);
+		stack.push(obj2);
+		stack.push(obj3);
+		stack.push(obj4);
+		stack.push(obj5);
+		stack.push(obj6);
+
+		Assert.assertTrue(stack.getUniqueElementsCount() == 4);
+	}
+
+	@Test
+	public void uniqueIntElementsCountTest() {
+
+		Stack<Integer> stack = new Stack<Integer>();
+
+		int n = 10000;
+		for (int i = 0; i < n; ++i) {
+			stack.push(i);
+			stack.push(i);
+		}
+		stack.push(100001);
+		stack.push(100001);
+		stack.push(100001);
+
+		Assert.assertTrue(stack.getUniqueElementsCount() == n + 1);
+	}
+
+	@Test
 	public void testPushStringObj() {
 		String stringObj = "String Object";
-		Stack<String> stack = new LinkedListStack<String>();
+		StackInterface<String> stack = new Stack<String>();
 		stack.push(stringObj);
 		Assert.assertTrue((stack.peak().equals(stringObj))
 				&& (stack.size() == 1));
@@ -19,7 +57,7 @@ public class StackTest {
 	public void testPopStringObj() {
 		String stringObj1 = "String Object 1";
 		String stringObj2 = "String Object 2";
-		Stack<String> stack = new LinkedListStack<String>();
+		StackInterface<String> stack = new Stack<String>();
 		stack.push(stringObj1);
 		stack.push(stringObj2);
 		Assert.assertTrue((stack.pop().equals(stringObj2))
@@ -29,66 +67,9 @@ public class StackTest {
 	@Test
 	public void checkPeakOfStackStringObjs() {
 		String stringObj = "String Object";
-		Stack<String> stack = new LinkedListStack<String>();
+		StackInterface<String> stack = new Stack<String>();
 		stack.push(stringObj);
 		Assert.assertEquals(stack.peak(), stringObj);
-	}
-
-	@Test
-	public void testPushIntNum() {
-		Integer intNum = 0;
-		Stack<Integer> stack = new LinkedListStack<Integer>();
-		int n = 10000;
-		for(int i = 1; i < n; ++i){
-			intNum = n;
-			stack.push(intNum);
-		}
-		Assert.assertTrue((stack.peak().equals(intNum)) && (stack.size() == n-1));
-	}
-
-	@Test
-	public void testPopIntNum() {
-		Integer intObj1 = 1;
-		Integer intObj2 = 2;
-		Stack<Integer> stack = new LinkedListStack<Integer>();
-		stack.push(intObj1);
-		stack.push(intObj2);
-		Assert.assertTrue((stack.pop().equals(intObj2)) && (stack.size() == 1));
-	}
-
-	@Test
-	public void checkPeakOfStackIntNums() {
-		Integer intNum = 1;
-		Stack<Integer> stack = new LinkedListStack<Integer>();
-		stack.push(intNum);
-		Assert.assertEquals(stack.peak(), intNum);
-	}
-
-	@Test
-	public void testPushObject() {
-		Object obj = new Object();
-		Stack<Object> stack = new LinkedListStack<Object>();
-		stack.push(obj);
-		Assert.assertTrue((stack.peak().equals(obj)) && (stack.size() == 1));
-	}
-
-	@Test
-	public void testPopObject() {
-		Object objectObj1 = new Object();
-		Object objectObj2 = new Object();
-		Stack<Object> stack = new LinkedListStack<Object>();
-		stack.push(objectObj1);
-		stack.push(objectObj2);
-		Assert.assertTrue((stack.pop().equals(objectObj2))
-				&& (stack.size() == 1));
-	}
-
-	@Test
-	public void checkPeakOfStackObjs() {
-		Object obj = new Object();
-		Stack<Object> stack = new LinkedListStack<Object>();
-		stack.push(obj);
-		Assert.assertEquals(stack.peak(), obj);
 	}
 
 	@Test
@@ -96,7 +77,7 @@ public class StackTest {
 		String stringObj1 = "String Object 1";
 		String stringObj2 = "String Object 2";
 		String stringObj3 = "String Object 3";
-		Stack<String> stack = new LinkedListStack<String>();
+		StackInterface<String> stack = new Stack<String>();
 		stack.push(stringObj1);
 		stack.push(stringObj2);
 		stack.push(stringObj3);
@@ -111,7 +92,7 @@ public class StackTest {
 		String stringObj1 = "String Object 1";
 		String stringObj2 = "String Object 2";
 		String stringObj3 = "String Object 3";
-		Stack<String> stack = new LinkedListStack<String>();
+		StackInterface<String> stack = new Stack<String>();
 		stack.push(stringObj1);
 		stack.push(stringObj2);
 		stack.push(stringObj3);
@@ -120,7 +101,7 @@ public class StackTest {
 			stack.pop();
 			stack.pop();
 			stack.pop();
-		} catch (RuntimeException exception) { 
+		} catch (RuntimeException exception) {
 			Assert.assertEquals("Stack is underflow", exception.getMessage());
 		}
 	}

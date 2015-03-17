@@ -1,6 +1,6 @@
 package stack;
 
-public class LinkedListStack<Item> implements Stack<Item> {
+public class LinkedListStack<Item> implements StackInterface<Item> {
 
 	private Node head;
 	private int size;
