@@ -1,48 +1,35 @@
 package stack;
 
-public class LinkedListStack<Item> implements StackInterface<Item> {
+import java.util.LinkedList;
 
-	private Node head;
-	private int size;
+public class LinkedListStack<Item> implements Stack<Item> {
 
-	private class Node {
-		Item item;
-		Node next;
-	}
+	private LinkedList<Item> items = new LinkedList<Item>();
 
 	public LinkedListStack() {
-		head = null;
-		size = 0;
 	}
 
 	public void push(Item item) {
-		Node oldHead = head;
-		head = new Node();
-		head.item = item;
-		head.next = oldHead;
-		++size;
+		items.addLast(item);
 	}
 
 	public Item pop() {
-		if (size == 0){
+		if (items.isEmpty()) {
 			throw new RuntimeException("Stack is underflow");
 		}
-		Item item = head.item;
-		head = head.next;
-		--size;
-		return item;
+		return items.removeLast();
 	}
 
-	public Item peak() {
-		return head.item;
+	public Item peek() {
+		return items.peekLast();
 	}
 
 	public int size() {
-		return size;
+		return items.size();
 	}
 
 	public boolean isEmpty() {
-		return (size == 0);
+		return items.isEmpty();
 	}
 
 }

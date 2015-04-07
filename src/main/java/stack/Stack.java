@@ -1,12 +1,12 @@
 package stack;
 
-public interface StackInterface<Item> {
+public interface Stack<Item> {
 
 	public void push(Item item);
 
 	public Item pop();
 
-	public Item peak();
+	public Item peek();
 
 	public int size();
 
