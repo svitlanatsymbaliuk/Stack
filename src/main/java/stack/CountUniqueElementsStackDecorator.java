@@ -33,7 +33,7 @@ public class CountUniqueElementsStackDecorator<Item> extends
 			countUniqueElementsMap.put(item, --counter);
 		}
 
-		return item;
+		return decoratedStack.pop();
 	}
 
 	public int getCountOfUniqueElementsInStack() {
