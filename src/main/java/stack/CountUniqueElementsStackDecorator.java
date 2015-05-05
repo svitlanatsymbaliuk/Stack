@@ -39,4 +39,5 @@ public class CountUniqueElementsStackDecorator<Item> extends
 	public int getCountOfUniqueElementsInStack() {
 		return countUniqueElementsMap.size();
 	}
+
 }
